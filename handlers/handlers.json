@@ -1,12 +1,9 @@
 {
     "handlers": {
-        "influx": {
-           "type": "pipe",
-           "command": "/opt/sensu/embedded/bin/metrics-influxdb.rb"
-        },
-        "default": {
-            "type": "set",
-            "handlers": ["influx"]
+      "influxdb-services": {
+          "mutator": "service-curl",
+          "type": "pipe",
+          "command": "metrics-influxdb.rb -c influxdb-services"
         }
     }
 }

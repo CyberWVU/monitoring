@@ -1,0 +1,7 @@
+{
+  "mutators": {
+    "service-curl": {
+      "command": "mutate-service-curl.rb"
+    }
+  }
+}

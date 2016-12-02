@@ -4,11 +4,14 @@ USER root
 
 ENV TRANSPORT_NAME=redis
 ENV REDIS_HOST=redis
+ENV  LOG_LEVEL=debug
 
 COPY conf/* /etc/sensu/conf.d/
 COPY handlers/* /etc/sensu/conf.d/
 COPY checks/* /etc/sensu/check.d/
-#COPY bin/*.rb /opt/sensu/embedded/bin/
+COPY mutators/* /etc/sensu/conf.d/
+COPY bin/*.rb /opt/sensu/embedded/bin/
+
 
 VOLUME ["/var/log/sensu"]
 

@@ -1,7 +1,8 @@
 checks:
   cyberwvu_website:
+    type: "metric"
     command: "check-http.rb -u http://cyberwvu.lcsee.wvu.edu"
     subscribers: ["test"]
-    handlers: ["default"]
+    handlers: ["influxdb-services"]
     interval: 20
     refresh: 60
