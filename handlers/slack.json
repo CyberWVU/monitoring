@@ -1,0 +1,6 @@
+{
+    "slack": {
+        "webhook_url": "slack_hook_url",
+        "channel": "#sensu"
+    }
+}

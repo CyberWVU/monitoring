@@ -1,0 +1,7 @@
+checks:
+  cyberwvu_website:
+    command: "check-http.rb -u http://cyberwvu.lcsee.wvu.edu"
+    subscribers: ["test"]
+    handlers: ["default"]
+    interval: 20
+    refresh: 60

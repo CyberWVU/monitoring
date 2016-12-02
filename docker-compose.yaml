@@ -1,0 +1,43 @@
+api:
+  build: .
+  links:
+    - redis
+    - influxdb
+  command: api
+  ports:
+    - '4567:4567'
+server:
+  build : .
+  links:
+    - redis
+    - api
+    - influxdb
+  command: server
+client:
+  build: .
+  links:
+    - redis
+    - influxdb
+  environment:
+    CLIENT_NAME: test
+    CLIENT_SUBSCRIPTIONS: all,test
+    CLIENT_ADDRESS: 127.0.0.1
+  ports:
+    - '3030:3030'
+  command: client
+redis:
+  image: redis:3
+uchiwa:
+  image: sstarcher/uchiwa
+  environment:
+    SENSU_DC_NAME: test
+    SENSU_HOSTNAME: api
+  links:
+    - api
+  ports:
+    - '80:3000'
+influxdb:
+  image: influxdb:1.0.2
+  ports:
+    - '8083:8083'
+    - '8086:8086'
